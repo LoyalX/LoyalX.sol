@@ -1,23 +1,13 @@
-# Use an official Python runtime as a parent image
-FROM python:2.7-slim
+FROM s390x/node:latest
+MAINTAINER Jorge Izquierdo <jorge@unpatent.co>
 
-# Set the working directory to /app
-WORKDIR /app
+RUN npm install -g ethereumjs-testrpc truffle
 
-# Copy the current directory contents into the container at /app
-ADD . /app
+COPY . app
+WORKDIR app
 
-# Install any needed packages specified in requirements.txt
-RUN pip install -r requirements.txt
-	
-# Make port 80 available to the world outside this container
-EXPOSE 80
+RUN npm install -g lite-server
 
-# Define environment variable
-#ENV NAME World
+#CMD ["sh", "../scripts/test.sh"]
 
-# Run app.py when the container launches
-#CMD ["python", "app.py"]
-#CMD ["npm run", "dev"] 
-
-ENTRYPOINT ["truffle"]
+ENTRYPOINT ["lite-server"]

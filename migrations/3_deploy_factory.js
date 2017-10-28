@@ -1,6 +1,3 @@
-const HumanStandardTokenFactory =
-  artifacts.require(`./HumanStandardTokenFactory.sol`)
+const LoyaltyCoinFactory = artifacts.require("./LoyaltyTokenFactory.sol");
 
-module.exports = (deployer) => {
-  deployer.deploy(HumanStandardTokenFactory)
-}
+module.exports = (deployer) => deployer.deploy(LoyaltyCoinFactory);

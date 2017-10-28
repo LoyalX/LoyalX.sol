@@ -1,15 +1,15 @@
 module.exports = {
   networks: {
-    /*development: {
+    testrpc: {
       host: "localhost",
       port: 8545,
 	  gas: 1712388,
       gasPrice: 1000000000,
       network_id: "*" // Match any network id
-    }*/
+    },
     development: {
-      host: "172.17.0.2",//"localhost",
-      port: 22000, // was 8545
+      host: "localhost",
+      port: 8545,
       network_id: "*" // Match any network id
     },
 	"kovan": {
@@ -18,6 +18,11 @@ module.exports = {
       port: 8545,
 	  gas: 800000, //1712388,
       gasPrice: 10000000000,
+    },
+    ocean: {
+      host: "46.101.58.199",
+      port: 22000, 
+      network_id: "*" 
     }
   }
 };

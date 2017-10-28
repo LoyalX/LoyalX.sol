@@ -19,7 +19,11 @@ contract StandardToken is Token {
         //if (balances[msg.sender] >= _value && balances[_to] + _value > balances[_to]) {
         if (balances[msg.sender] >= _value) {
             balances[msg.sender] -= _value;
+
+
             balances[_to] += _value;
+
+
             Transfer(msg.sender, _to, _value);
             return true;
         } else { return false; }
@@ -30,7 +34,10 @@ contract StandardToken is Token {
         //if (balances[_from] >= _value && allowed[_from][msg.sender] >= _value && balances[_to] + _value > balances[_to]) {
         if (balances[_from] >= _value && allowed[_from][msg.sender] >= _value) {
             balances[_to] += _value;
+            
             balances[_from] -= _value;
+
+
             allowed[_from][msg.sender] -= _value;
             Transfer(_from, _to, _value);
             return true;
@@ -50,6 +57,8 @@ contract StandardToken is Token {
     function allowance(address _owner, address _spender) constant returns (uint256 remaining) {
       return allowed[_owner][_spender];
     }
+
+    
 
     mapping (address => uint256) balances;
     mapping (address => mapping (address => uint256)) allowed;
