@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>Loyalty Coin</title>
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body class="container">
+    <h3>Loyalty Coin</h3>
+
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="blockchain">
+        <h3> 1. Set the value in the blockchain</h3>
+        <div class="form-group form-inline">
+          <label>Initial Amount <input type="text" id="initial-amount" class="text form-control" value="1000"></label>
+          <label>Name <input type="text" id="name" class="text form-control" value="Token Name"></label>
+          <label>Decimals <input type="text" id="decimals" class="text form-control" value="18"></label>
+          <label>Symbol <input type="text" id="symbol" class="text form-control" value="TKN"></label>
+          <button class="set btn btn-primary deploy-token">Deploy Token</button>
+          <p>Once you set the value, the transaction will need to be mined and then the value will be updated on the blockchain.</p>
+        </div>
+
+        <h3> 2. Get the current value</h3>
+        <div class="form-group">
+          <div>
+            current value is <span class="value"></span>
+          </div>
+          <button class="get btn btn-primary">Get Value</button>
+          <p>Click the button to get the current value. The initial value is 100.</p>
+        </div>
+
+        <h3> 3. Contract Calls </h3>
+        <p>Javascript calls being made: </p>
+        <div class="logs">
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+	
+  </body>
+</html>
