@@ -1,7 +1,7 @@
 {
-	"name": "loyaltycoin",
+	"name": "loyalx-contracts",
 	"version": "0.0.1",
-	"description": "Loyalty Coin",
+	"description": "LoyalX Contracts",
 	"main": "truffle.js",
 	"private": true,
 	"directories": {
@@ -10,11 +10,21 @@
 	"scripts": {
 		"dev": "lite-server",
 		"live": "node",
-		"test": "truffle test"
+		"test": "truffle test",
+		"postinstall": "truffle compile"
 	},
-	"author": "Loyalty Chain",
-	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MarcWafik/LoyalX-Contracts.git"
+	},
+	"author": "LoyalX",
 	"devDependencies": {
-		"lite-server": "^2.3.0"
-	}
+		"lite-server": "^2.3.0",
+		"truffle": "^3.4.11"
+	},
+	"license": "GNU LGPLv3",
+	"bugs": {
+		"url": "https://github.com/MarcWafik/LoyalX-Contracts/issues"
+	},
+	"homepage": "https://github.com/MarcWafik/LoyalX-Contracts#readme"
 }
