@@ -1,24 +1,28 @@
-# LoyalX Smart Contracts
+<img src="http://l0yalx.io/uploads/MusicKings_logo%202-nji.png" height="45px"/> LoyalX Smart Contracts
+=========================================================================================
+
+self hosted contracts to help developer run local tests
 
 ### Steps to run
 
 For reference: http://truffleframework.com/tutorials/pet-shop
 
+
 ### Install:
 
-```
-npm install -g ethereumjs-testrpc truffle
-npm install
-```
+1. `$ npm install -g ethereumjs-testrpc`
+2. `$ npm install`
 
-### For compile and run:
+
+### Setup:
 
 1. start the test server `$ testrpc`
-2. compile the contracts `$ truffle compile`
-3. migrate the contracts `$ truffle migrate`
+2. compile the contracts `$ npm run compile`
+3. migrate the contracts `$ npm run migrate`
 4. run lite server to host the contract apb `$ npm run dev`
 
-### For hosted apb contracts:
+
+### Hosted apb contracts:
 
 `GET: {host ip}:3000/{contract name}.json`   
 * Factory contract apb `GET: localhost:3000/LoyaltyTokenFactory.json`
