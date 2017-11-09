@@ -19,7 +19,9 @@
 		"url": "git+https://github.com/MarcWafik/LoyalX-Contracts.git"
 	},
 	"author": "LoyalX",
-	"dependencies": {},
+	"dependencies": {
+		"moment": "^2.19.1"
+	},
 	"devDependencies": {
 		"lite-server": "^2.3.0",
 		"truffle": "^3.4.11"
@@ -29,5 +31,4 @@
 		"url": "https://github.com/MarcWafik/LoyalX-Contracts/issues"
 	},
 	"homepage": "https://github.com/MarcWafik/LoyalX-Contracts#readme"
-
 }
