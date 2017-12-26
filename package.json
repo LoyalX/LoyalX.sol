@@ -20,7 +20,9 @@
 	},
 	"author": "LoyalX",
 	"dependencies": {
-		"moment": "^2.19.1"
+		"moment": "^2.19.1",
+		"truffle-hdwallet-provider": "0.0.3",
+		"zeppelin-solidity": "^1.4.0"
 	},
 	"devDependencies": {
 		"lite-server": "^2.3.0",
