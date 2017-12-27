@@ -12,5 +12,4 @@ library StrHelper {
         assembly { result := mload(add(source, 32)) }
     }
 
-
 }

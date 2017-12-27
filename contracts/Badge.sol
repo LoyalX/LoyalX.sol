@@ -17,7 +17,4 @@ contract Badge is Ownable {
         owner = _owner;
     }
 
-    function getMetaData() public view returns (string, string, address, string) {
-        return (badgeName, badgeClass, organization, ownerName);
-    }
 }

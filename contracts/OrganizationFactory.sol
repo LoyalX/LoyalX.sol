@@ -51,9 +51,5 @@ contract OrganizationFactory {
         return organizations;
     }
 
-    function findOrganizationsAddressByOwner(address owner) public view returns (address) {
-        return ownerMap[owner];
-    }
-
 }
 
