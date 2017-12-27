@@ -36,10 +36,11 @@ contract Organization is Ownable {
 
     event BadgeIssued(string badgeName, string badgeClass, string ownerName, address ownerAddress);
 
-    function issueBadge(string _badgeName, string _badgeClass, string _ownerName, address _ownerAddress) public {
+    function issueBadge(string _badgeName, string _badgeClass, string _ownerName, address _ownerAddress) public returns (address) {
         Badge newBadge = new Badge(_badgeName, _badgeClass, _ownerName, _ownerAddress);
         badgesOwnersMap[_ownerAddress].push(address(newBadge));
         BadgeIssued(_badgeName, _badgeClass, _ownerName, _ownerAddress);
+        return address(newBadge);
     }
 
     function getBadgesAddress(address owner) public view returns (address[]) {

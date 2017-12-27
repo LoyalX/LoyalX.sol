@@ -47,11 +47,11 @@ contract OrganizationFactory {
         return address(org);
     }
 
-    function getOrganizationsAddress() public view returns (address[]) {
+    function getOrganizationsAddresses() public view returns (address[]) {
         return organizations;
     }
 
-    function findOrganizationsByOwner(address owner) public view returns (address) {
+    function findOrganizationsAddressByOwner(address owner) public view returns (address) {
         return ownerMap[owner];
     }
 
