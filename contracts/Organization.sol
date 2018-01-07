@@ -1,50 +1,40 @@
 pragma solidity ^0.4.18;
 
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
-import './Badge.sol';
+import './BadgeProgram.sol';
 import './RewardProgram.sol';
 
 contract Organization is Ownable {
 
+    string public version = "0.1";               // human 0.1 standard. Just an arbitrary versioning scheme.
     string public name;
     string public website;
     string public email;
-    string public logoURL;
-    string public tokenIconURL;
+    string public country;
+    string public image;
     string public about;
 
-    address public rewardProgram;
-    mapping(address => address[]) badgesOwnersMap;
+    RewardProgram public rewardProgram;
+    BadgeProgram public badgeProgram;
     
     function Organization(
         string _name,
         string _website,
         string _email,
-        string _logoURL,
-        string _tokenIconURL,
+        string _country,
+        string _image,
         string _about,
-        address _rewardProgram
+        RewardProgram _rewardProgram,
+        BadgeProgram _badgeProgram
     ) public {
         name = _name;
         website = _website;
         email = _email;
-        logoURL = _logoURL;
-        tokenIconURL = _tokenIconURL;
+        country = _country;
+        image = _image;
         about = _about;
         rewardProgram = _rewardProgram;
-    }
-
-    event BadgeIssued(string badgeName, string badgeClass, string ownerName, address ownerAddress);
-
-    function issueBadge(string _badgeName, string _badgeClass, string _ownerName, address _ownerAddress) public returns (address) {
-        Badge newBadge = new Badge(_badgeName, _badgeClass, _ownerName, _ownerAddress);
-        badgesOwnersMap[_ownerAddress].push(address(newBadge));
-        BadgeIssued(_badgeName, _badgeClass, _ownerName, _ownerAddress);
-        return address(newBadge);
-    }
-
-    function getBadgesAddress(address owner) public view returns (address[]) {
-        return badgesOwnersMap[owner];
+        badgeProgram = _badgeProgram;
     }
 
 }

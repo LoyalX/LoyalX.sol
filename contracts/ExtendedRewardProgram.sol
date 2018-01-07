@@ -15,7 +15,7 @@ contract ExtendedRewardProgram is RewardProgram {
 
  using SafeMath for uint256;
 
-    event SupplyIncreased(uint value, address to);
+    event SupplyIncreased(uint value, address indexed to);
 
     // stolen from https://github.com/ethereum/EIPs/pull/621
     function increaseSupply(uint value, address to) public onlyOwner returns (bool) {
@@ -26,7 +26,7 @@ contract ExtendedRewardProgram is RewardProgram {
         return true;
     }
 
-    event SupplyDecreased(uint value, address from);
+    event SupplyDecreased(uint value, address indexed from);
 
     function decreaseSupply(uint value, address from) public onlyOwner returns (bool) {
         balances[from] = balances[from].sub(value);
