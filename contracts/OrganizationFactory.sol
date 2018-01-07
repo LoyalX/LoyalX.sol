@@ -25,8 +25,9 @@ contract OrganizationFactory {
     ) public returns (Organization) {
         require(ownerMap[msg.sender] == address(0x0));  // the owner must have no orginizations
 
+        // creates the reward program
         RewardProgram rp = new RewardProgram(_tokenInitialAmount, _tokenName, _tokenDecimal, _tokenSymbol);
-        rp.transfer(msg.sender, _tokenInitialAmount);
+        rp.transfer(msg.sender, _tokenInitialAmount);   // sends the tokens to the owner
         rp.transferOwnership(msg.sender);
 
         BadgeProgram bp = new BadgeProgram();
@@ -35,16 +36,17 @@ contract OrganizationFactory {
         Organization org = new Organization(_name, _website, _email, _country, _image, _about, rp, bp);
         org.transferOwnership(msg.sender);
 
-        ownerMap[msg.sender] = org;            // to keep track of who created what
-        organizations.push(org);               // adds the token address to the list
+        ownerMap[msg.sender] = org;                     // to keep track of who created what
+        organizations.push(org);                        // adds the token address to the list
 
         OrganizationCreated(org);
         return org;
     }
 
-    function getOrganizationsAddresses() public view returns (Organization[]) {
-        return organizations;
-    }
+   /**
+    * @return A Organizations array of all registered organizations.
+    */
+    function getOrganizations() public view returns (Organization[]) { return organizations; }
 
 }
 

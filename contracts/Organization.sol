@@ -6,16 +6,16 @@ import './RewardProgram.sol';
 
 contract Organization is Ownable {
 
-    string public version = "0.1";               // human 0.1 standard. Just an arbitrary versioning scheme.
     string public name;
     string public website;
     string public email;
     string public country;
-    string public image;
-    string public about;
+    string public image;                    // image url or an ipfs hash.
+    string public about;                    // details about the org, can contain html / md.
+    string public version = "0.1";          // human 0.1 standard. Just an arbitrary versioning scheme.
 
-    RewardProgram public rewardProgram;
-    BadgeProgram public badgeProgram;
+    RewardProgram public rewardProgram;     // the reward program contract
+    BadgeProgram public badgeProgram;       // the badge program contract
     
     function Organization(
         string _name,
@@ -26,7 +26,7 @@ contract Organization is Ownable {
         string _about,
         RewardProgram _rewardProgram,
         BadgeProgram _badgeProgram
-    ) public {
+    ) public Ownable() {
         name = _name;
         website = _website;
         email = _email;
