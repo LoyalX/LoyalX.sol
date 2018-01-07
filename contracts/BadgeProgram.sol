@@ -29,4 +29,8 @@ contract BadgeProgram is Ownable {
         return badges[_badgeIndex];
     }
 
+    function getBadges() public view returns (Badge[]) {
+        return badges;
+    }
+
 }
