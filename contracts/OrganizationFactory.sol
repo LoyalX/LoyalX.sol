@@ -22,7 +22,7 @@ contract OrganizationFactory {
         string _tokenName,
         uint8 _tokenDecimal,
         string _tokenSymbol
-    ) public returns (Organization) {
+    ) external returns (Organization) {
         require(ownerMap[msg.sender] == address(0x0));  // the owner must have no orginizations
 
         // creates the reward program
@@ -46,7 +46,7 @@ contract OrganizationFactory {
    /**
     * @return A Organizations array of all registered organizations.
     */
-    function getOrganizations() public view returns (Organization[]) { return organizations; }
+    function getOrganizations() external view returns (Organization[]) { return organizations; }
 
 }
 

@@ -37,4 +37,21 @@ contract Organization is Ownable {
         badgeProgram = _badgeProgram;
     }
 
+    function update(
+        string _name,
+        string _website,
+        string _email,
+        string _country,
+        string _image,
+        string _about
+    ) external onlyOwner returns (bool) {
+        name = _name;
+        website = _website;
+        email = _email;
+        country = _country;
+        image = _image;
+        about = _about;
+        return true;
+    }
+
 }

@@ -25,7 +25,7 @@ contract RewardProgram is StandardToken, Ownable {
     string public symbol;             // An identifier: eg SBX
     string public version = "0.1";    // human 0.1 standard. Just an arbitrary versioning scheme.
 
-    function RewardProgram(uint256 _initialAmount, string _name, uint8 _decimal, string _symbol) public {
+    function RewardProgram(uint256 _initialAmount, string _name, uint8 _decimal, string _symbol) public Ownable() {
         balances[msg.sender] = _initialAmount;  // Give the creator all initial tokens
         totalSupply = _initialAmount;           // Update total supply
         name = _name;                           // Set the name for display purposes

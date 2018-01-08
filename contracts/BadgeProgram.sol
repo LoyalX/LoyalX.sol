@@ -25,7 +25,7 @@ contract BadgeProgram is Ownable {
     * @param _styleData  such as color or background color ... etc
     * @return A Badge the badge that has been created.
     */
-    function add(string _name, string _rank, string _reason, string _about, string _image, string _styleData) public onlyOwner returns (Badge) {
+    function add(string _name, string _rank, string _reason, string _about, string _image, string _styleData) external onlyOwner returns (Badge) {
         Badge nbadge = new Badge(_name, _rank, _reason, _about, _image, _styleData);
         badges.push(nbadge);
         Created(nbadge);

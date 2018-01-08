@@ -29,4 +29,21 @@ contract Badge is Ownable {
         owner = msg.sender;
     }
 
+    function update(
+        string _name, 
+        string _rank, 
+        string _reason, 
+        string _about, 
+        string _image, 
+        string _styleData
+    ) external onlyOwner returns (bool) {
+        name = _name;
+        rank = _rank;
+        reason = _reason;
+        about = _about;
+        image = _image;
+        styleData = _styleData;
+        return true;
+    }
+
 }

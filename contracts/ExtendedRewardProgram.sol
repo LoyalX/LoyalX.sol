@@ -2,15 +2,6 @@ pragma solidity ^0.4.18;
 
 import './RewardProgram.sol';
 
-/*
-This Token Contract implements the standard token functionality (https://github.com/ethereum/EIPs/issues/20) as well as the following OPTIONAL extras intended for use by loyalty team.
-
-
-1) Initial Finite Supply (upon creation one specifies how much is minted).
-2) In the absence of a token registry: Optional Decimal, Symbol & Name.
-3) Optional approveAndCall() functionality to notify a contract if an approval() has occurred.
-
-.*/
 contract ExtendedRewardProgram is RewardProgram {
 
  using SafeMath for uint256;
@@ -36,4 +27,14 @@ contract ExtendedRewardProgram is RewardProgram {
         return true;
     }
 
+    function update(
+        string _name,
+        uint8 _decimal,
+        string _symbol
+    ) external onlyOwner returns (bool) {
+        name = _name;
+        decimals = _decimal;
+        symbol = _symbol;
+        return true;
+    }
 }
