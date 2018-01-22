@@ -7,50 +7,35 @@ import './RewardProgram.sol';
 contract Organization is Ownable {
 
     string public name;
-    string public website;
-    string public email;
     string public country;
-    string public image;                    // image url or an ipfs hash.
-    string public about;                    // details about the org, can contain html / md.
-    string public version = "0.1";          // human 0.1 standard. Just an arbitrary versioning scheme.
+    string public metaData;                      // a json string that hold the data
+    string public version = "0.1";               // human 0.1 standard. Just an arbitrary versioning scheme.
 
-    RewardProgram public rewardProgram;     // the reward program contract
-    BadgeProgram public badgeProgram;       // the badge program contract
+    RewardProgram public rewardProgram;          // the reward program contract
+    BadgeProgram public badgeProgram;            // the badge program contract
     
     function Organization(
         string _name,
-        string _website,
-        string _email,
         string _country,
-        string _image,
-        string _about,
+        string _metaData,
         RewardProgram _rewardProgram,
         BadgeProgram _badgeProgram
     ) public Ownable() {
         name = _name;
-        website = _website;
-        email = _email;
         country = _country;
-        image = _image;
-        about = _about;
+        metaData = _metaData;
         rewardProgram = _rewardProgram;
         badgeProgram = _badgeProgram;
     }
 
     function update(
         string _name,
-        string _website,
-        string _email,
         string _country,
-        string _image,
-        string _about
+        string _metaData
     ) external onlyOwner returns (bool) {
         name = _name;
-        website = _website;
-        email = _email;
         country = _country;
-        image = _image;
-        about = _about;
+        metaData = _metaData;
         return true;
     }
 

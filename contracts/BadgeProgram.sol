@@ -4,7 +4,8 @@ import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 import './Badge.sol';
 
 contract BadgeProgram is Ownable {
-    
+
+    string public metaData;                            // a json string that hold the data
     string public version = "0.1";                     // human 0.1 standard. Just an arbitrary versioning scheme.
 
     Badge[] public badges;                             // a list of created badges
@@ -18,15 +19,11 @@ contract BadgeProgram is Ownable {
    /**
     * @dev Function to add a new badge to the reward program
     * @param _name       badge name
-    * @param _rank       can be novice, advanced or may be lvl 1, lvl 2
-    * @param _reason     rules to recive the badge, can contain html / md
-    * @param _about      details about the badge, can contain html / md
-    * @param _image      image url or an ipfs hash
-    * @param _styleData  such as color or background color ... etc
+    * @param _metaData   such as color or background color ... etc
     * @return A Badge the badge that has been created.
     */
-    function add(string _name, string _rank, string _reason, string _about, string _image, string _styleData) external onlyOwner returns (Badge) {
-        Badge nbadge = new Badge(_name, _rank, _reason, _about, _image, _styleData);
+    function add(string _name, string _metaData, Badge _next, Badge _previous) external onlyOwner returns (Badge) {
+        Badge nbadge = new Badge(_name, _metaData, _next, _previous);
         badges.push(nbadge);
         Created(nbadge);
         return nbadge;
@@ -35,7 +32,7 @@ contract BadgeProgram is Ownable {
    /**
     * @dev Function to issue to user badges
     * @param _badgeIndex The badge index from the Badgeprogram.badges array.
-    * @param _to The address that will receive the badge.
+    * @param _to         The address that will receive the badge.
     * @return A Badge the badge that has been issued.
     */
     function issue(uint _badgeIndex, address _to) onlyOwner public returns (Badge) {
@@ -49,4 +46,8 @@ contract BadgeProgram is Ownable {
     */
     function getBadges() public view returns (Badge[]) { return badges; }
 
+   /**
+    * @return A Badges array of the badges that the user recived.
+    */
+    function getIssuedBadges(address user) public view returns (Badge[]) { return issuedBadges[user]; }
 }

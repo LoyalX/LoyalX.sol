@@ -9,15 +9,12 @@ contract OrganizationFactory {
     Organization[] public organizations;                    // an array of all Organizations addresses
     mapping(address => Organization) public ownerMap;       // a map of owener => orgnization
 
-    event OrganizationCreated(address organization);
+    event OrganizationCreated(address owner, Organization organization);
 
     function createOrganization(
         string _name,
-        string _website,
-        string _email,
         string _country,
-        string _image,
-        string _about,
+        string _metaData,
         uint256 _tokenInitialAmount,
         string _tokenName,
         uint8 _tokenDecimal,
@@ -33,13 +30,13 @@ contract OrganizationFactory {
         BadgeProgram bp = new BadgeProgram();
         bp.transferOwnership(msg.sender);
 
-        Organization org = new Organization(_name, _website, _email, _country, _image, _about, rp, bp);
+        Organization org = new Organization(_name, _country, _metaData, rp, bp);
         org.transferOwnership(msg.sender);
 
         ownerMap[msg.sender] = org;                     // to keep track of who created what
         organizations.push(org);                        // adds the token address to the list
+        OrganizationCreated(msg.sender, org);
 
-        OrganizationCreated(org);
         return org;
     }
 
