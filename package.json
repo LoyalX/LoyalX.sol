@@ -11,8 +11,12 @@
 		"live": "node",
 		"test": "truffle test",
 		"migrate": "truffle migrate",
-		"compile": "truffle compile",
-		"postinstall": "truffle compile"
+		"ganache": "truffle migrate --network ganache",
+		"testrpc": "truffle migrate --network testrpc",
+		"rinkeby": "truffle migrate --network rinkeby",
+		"ropsten": "truffle migrate --network ropsten",
+		"kovan": "truffle migrate --network kovan",
+		"compile": "truffle compile"
 	},
 	"repository": {
 		"type": "git",
