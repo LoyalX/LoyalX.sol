@@ -1,9 +1,9 @@
 pragma solidity ^0.4.18;
 
-import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
-import './Badge.sol';
+import "../Feature.sol";
+import "./Badge.sol";
 
-contract BadgeProgram is Ownable {
+contract BadgeProgram is Feature {
 
     string public metaData;                            // a json string that hold the data
     string public version = "0.1";                     // human 0.1 standard. Just an arbitrary versioning scheme.

@@ -1,41 +1,27 @@
 pragma solidity ^0.4.18;
 
-import './Organization.sol';
-import './RewardProgram.sol';
-import './BadgeProgram.sol';
+import "./Organization.sol";
 
 contract OrganizationFactory {
 
     Organization[] public organizations;                    // an array of all Organizations addresses
     mapping(address => Organization) public ownerMap;       // a map of owener => orgnization
 
-    event OrganizationCreated(address owner, Organization organization);
+    event Created(address owner, Organization organization);
 
-    function createOrganization(
+    function create(
         string _name,
         string _country,
-        string _metaData,
-        uint256 _tokenInitialAmount,
-        string _tokenName,
-        uint8 _tokenDecimal,
-        string _tokenSymbol
+        string _metaData
     ) external returns (Organization) {
         require(ownerMap[msg.sender] == address(0x0));  // the owner must have no orginizations
 
-        // creates the reward program
-        RewardProgram rp = new RewardProgram(_tokenInitialAmount, _tokenName, _tokenDecimal, _tokenSymbol);
-        rp.transfer(msg.sender, _tokenInitialAmount);   // sends the tokens to the owner
-        rp.transferOwnership(msg.sender);
-
-        BadgeProgram bp = new BadgeProgram();
-        bp.transferOwnership(msg.sender);
-
-        Organization org = new Organization(_name, _country, _metaData, rp, bp);
+        Organization org = new Organization(_name, _country, _metaData);
         org.transferOwnership(msg.sender);
 
         ownerMap[msg.sender] = org;                     // to keep track of who created what
         organizations.push(org);                        // adds the token address to the list
-        OrganizationCreated(msg.sender, org);
+        Created(msg.sender, org);
 
         return org;
     }

@@ -1,7 +1,8 @@
 pragma solidity ^0.4.18;
 
-import 'zeppelin-solidity/contracts/token/StandardToken.sol';
-import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
+import "zeppelin-solidity/contracts/token/StandardToken.sol";
+import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "../Feature.sol";
 
 /*
 This Token Contract implements the standard token functionality (https://github.com/ethereum/EIPs/issues/20) as well as the following OPTIONAL extras intended for use by loyalty team.
@@ -10,7 +11,7 @@ This Token Contract implements the standard token functionality (https://github.
 2) In the absence of a token registry: Optional Decimal, Symbol & Name.
 3) Optional approveAndCall() functionality to notify a contract if an approval() has occurred.
 */
-contract RewardProgram is StandardToken, Ownable {
+contract RewardProgram is StandardToken, Ownable, Feature {
 
     /*
     Public variables of the token
@@ -25,7 +26,7 @@ contract RewardProgram is StandardToken, Ownable {
     string public symbol;             // An identifier: eg SBX
     string public version = "0.1";    // human 0.1 standard. Just an arbitrary versioning scheme.
 
-    function RewardProgram(uint256 _initialAmount, string _name, uint8 _decimal, string _symbol) public Ownable() {
+    function RewardProgram(FeatureFactory _factory, uint256 _initialAmount, string _name, uint8 _decimal, string _symbol) public Ownable() {
         balances[msg.sender] = _initialAmount;  // Give the creator all initial tokens
         totalSupply = _initialAmount;           // Update total supply
         name = _name;                           // Set the name for display purposes

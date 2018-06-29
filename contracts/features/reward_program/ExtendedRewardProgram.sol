@@ -1,6 +1,6 @@
 pragma solidity ^0.4.18;
 
-import './RewardProgram.sol';
+import "./RewardProgram.sol";
 
 contract ExtendedRewardProgram is RewardProgram {
 
